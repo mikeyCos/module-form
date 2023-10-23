@@ -1,0 +1,22 @@
+/* Delete or rename as needed */
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins/Poppins-Regular.ttf'),
+    url('./assets/fonts/Poppins/Poppins-SemiBold.ttf'),
+    url('./assets/fonts/Poppins/Poppins-Thin.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: lightblue;
+  font-family: 'Poppins', Arial, sans-serif;
+}
