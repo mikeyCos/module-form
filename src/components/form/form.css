@@ -1,0 +1,13 @@
+#form {
+  width: 500px;
+  margin: auto;
+}
+
+#form > .container {
+  padding: 1rem;
+}
+
+#form > .container > .form_item {
+  display: flex;
+  flex-direction: column;
+}
