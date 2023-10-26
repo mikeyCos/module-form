@@ -1,5 +1,8 @@
 # Changelog
 ---
+### 25 OCT 2023
+- Created `validateInput()` inside `form_validation_controller.js` module, `validateInput()` validates one input at a time, an input's validity is checked first on blur and an event listener for input is added if `checkValidity()` returns false, `submitForm()` and `resetForm()` methods added to `form_validation_controller.js` module, and removed outer object in `form.config.js`, `form.config.js` now exports two object literals.  
+---
 ### 24 OCT 2023
 - Created a `form_controller.js` module to control and initialize forms based on a state, created a `form.config.js` module that holds objects to be rendered in the `form.js` module, and initialized `form_validation_controller.js` module.  
 ---

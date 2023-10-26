@@ -1,75 +1,91 @@
-export default {
-  formChildren: {
-    email: {
-      element: 'input',
-      textContent: 'email',
-      attributes: {
-        id: 'email',
-        name: 'email',
-        type: 'email',
-        placeholder: 'email@address.com',
-      },
+
+export const inputs = {
+  email: {
+    element: 'input',
+    textContent: 'email',
+    attributes: {
+      id: 'email',
+      class: 'form_input',
+      name: 'email',
+      type: 'email',
+      placeholder: 'email@address.com',
+      required: true
     },
-    country: {
-      element: 'select',
-      textContent: 'country',
-      attributes: {
-        id: 'country',
-        name: 'country',
-      },
-      children: {
-        element: 'option',
-        countries: [
-          { '': ' '},
-          { ch: 'Switzerland' },
-          { gb: 'United Kingdom'},
-          { us: 'United States'},
-          { ca: 'Canada'},
-        ]
-      }
+    error: 'error placeholder email'
+  },
+  country: {
+    element: 'select',
+    textContent: 'country',
+    attributes: {
+      id: 'country',
+      class: 'form_input',
+      name: 'country',
+      required: true
     },
-    zipcode: {
-      element: 'input',
-      textContent: 'zip code',
-      attributes: {
-        id: 'zipcode',
-        name: 'zipcode',
-        type: 'text',
-      },
+    children: {
+      element: 'option',
+      countries: [
+        { '': ' '},
+        { ch: 'Switzerland' },
+        { gb: 'United Kingdom'},
+        { us: 'United States'},
+        { ca: 'Canada'},
+      ]
     },
-    password: {
-      element: 'input',
-      textContent: 'password',
-      attributes: {
-        id: 'password',
-        name: 'password',
-        type: 'text',
-        placeholder: 'Enter password',
-      },
+    error: 'error placeholder country'
+  },
+  zipcode: {
+    element: 'input',
+    textContent: 'zip code',
+    attributes: {
+      id: 'zipcode',
+      class: 'form_input',
+      name: 'zipcode',
+      type: 'text',
+      required: true
     },
-    passwordConfirmation: {
-      element: 'input',
-      textContent: 'confirm password',
-      attributes: {
-        id: 'password_confirm',
-        name: 'password_confirm',
-        type: 'text',
-        placeholder: 'Reenter password',
-      }
+    error: 'error placeholder zip code'
+  },
+  password: {
+    element: 'input',
+    textContent: 'password',
+    attributes: {
+      id: 'password',
+      class: 'form_input',
+      name: 'password',
+      type: 'text',
+      placeholder: 'Enter password',
+      required: true,
+      // pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+    },
+    error: 'error placeholder password'
+  },
+  passwordConfirmation: {
+    element: 'input',
+    textContent: 'confirm password',
+    attributes: {
+      id: 'password_confirm',
+      class: 'form_input',
+      name: 'password_confirm',
+      type: 'text',
+      placeholder: 'Reenter password',
+      required: true
+    },
+    error: 'error placeholder pasword confirmation'
+  }
+}
+
+export const formButtons = {
+  cancel: {
+    element: 'button',
+    attributes: {
+      class: 'btn_cancel',
     }
   },
-  formButtons: {
-    cancel: {
-      element: 'button',
-      attributes: {
-        class: 'btn_cancel',
-      }
-    },
-    submit: {
-      element: 'button',
-      attributes: {
-        class: 'btn_submit',
-      }
+  submit: {
+    element: 'button',
+    attributes: {
+      class: 'btn_submit',
     }
   }
 }
