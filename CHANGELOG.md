@@ -1,5 +1,8 @@
 # Changelog
 ---
+### 26 OCT 2023
+- Regular expression for password now works and will require at least one of each of the following: 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character, password confirmation input will use the password's value as it's pattern attribute, and selecting a country option will set the zip codes pattern attribute.   
+---
 ### 25 OCT 2023
 - Created `validateInput()` inside `form_validation_controller.js` module, `validateInput()` validates one input at a time, an input's validity is checked first on blur and an event listener for input is added if `checkValidity()` returns false, `submitForm()` and `resetForm()` methods added to `form_validation_controller.js` module, and removed outer object in `form.config.js`, `form.config.js` now exports two object literals.  
 ---

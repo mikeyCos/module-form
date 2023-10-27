@@ -11,7 +11,7 @@ export const inputs = {
       placeholder: 'email@address.com',
       required: true
     },
-    error: 'error placeholder email'
+    error: 'Use a valid email address (e.g., your_email@xyz.com).'
   },
   country: {
     element: 'select',
@@ -32,7 +32,7 @@ export const inputs = {
         { ca: 'Canada'},
       ]
     },
-    error: 'error placeholder country'
+    error: 'Select a country.'
   },
   zipcode: {
     element: 'input',
@@ -44,7 +44,7 @@ export const inputs = {
       type: 'text',
       required: true
     },
-    error: 'error placeholder zip code'
+    error: 'Enter a valid zip code corresponding to the selected country.'
   },
   password: {
     element: 'input',
@@ -53,12 +53,12 @@ export const inputs = {
       id: 'password',
       class: 'form_input',
       name: 'password',
-      type: 'text',
+      type: 'password',
       placeholder: 'Enter password',
       required: true,
-      // pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+      pattern: '(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)(?!.* ).{8,30}'
     },
-    error: 'error placeholder password'
+    error: 'Password must be at least 8 characters long, can be up to 30 characters long, and must contain 1 of each of the following: uppercase letter, lowercase letter, number, and special character. No spaces allowed.'
   },
   passwordConfirmation: {
     element: 'input',
@@ -67,11 +67,11 @@ export const inputs = {
       id: 'password_confirm',
       class: 'form_input',
       name: 'password_confirm',
-      type: 'text',
+      type: 'password',
       placeholder: 'Reenter password',
       required: true
     },
-    error: 'error placeholder pasword confirmation'
+    error: 'Passwords do not match.'
   }
 }
 

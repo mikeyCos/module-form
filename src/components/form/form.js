@@ -50,7 +50,7 @@ export default (state) => ({
           const option = createElement(options.element);
 
           Object.entries(options.countries[i]).forEach(([key, value]) => {
-            option.value = key.toLocaleUpperCase();
+            option.value = key;
             option.textContent = value;
           });
           formInput.appendChild(option);
@@ -78,15 +78,7 @@ export default (state) => ({
 
     this.cacheDOM(formElement);
     this.bindEvents();
-    // validateForm(formElement);
     return formElement;
   },
-  // resetForm(e) {
-  //   e.preventDefault();
-  //   console.log(`this.resetForm() is running from the form.js module`);
-  // },
-  // submitForm(e) {
-  //   e.preventDefault();
-  //   console.log(`this.submitForm() is running from the form.js module`);
-  // }
 });
+

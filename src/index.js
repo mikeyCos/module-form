@@ -1,7 +1,7 @@
 // Delete or rename as needed
 import './index.css';
-import buildForm from './components/form/form_controller';
+import initForm from './components/form/init_form';
 
 // const staticForm = buildForm.add('static');
 // document.body.appendChild(staticForm.render());
-document.body.appendChild(buildForm.add('static').render());
+document.body.appendChild(initForm.add('static').render());

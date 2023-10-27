@@ -21,5 +21,6 @@
 }
 
 #form > .container > .form_item > .validity_error {
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
