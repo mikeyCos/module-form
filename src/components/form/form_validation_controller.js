@@ -6,24 +6,25 @@ export default () => ({
   },
   submitForm(e) {
     e.preventDefault();
-    this.inputs.forEach(input => this.validateInput(input))
-    
+    this.inputs.forEach((input) => this.validateInput(input));
+
     this.resetForm();
   },
   validateInput(e) {
     const input = e.currentTarget ? e.currentTarget : e;
     if (input.id === 'password_confirm') {
-      input.pattern = [...this.inputs].find(key => key.type === input.type).value;
+      input.pattern = [...this.inputs].find((key) => key.type === input.type).value;
     } else if (input.id === 'zipcode') {
-      const inputCountry = [...this.inputs].find(key => key.id === 'country');
-      const iso = Object.keys(zipcodes).find(value => value === inputCountry.value);
-      console.log(iso)
-      console.log(zipcodes[iso]);
-      // input.pattern = zipcodes[iso];
+      const inputCountry = [...this.inputs].find((key) => key.id === 'country');
+      const iso = Object.keys(zipcodes).find((value) => value === inputCountry.value);
+      input.pattern = zipcodes[iso][0];
+
       // [...this.validityErrors].find(key => key.classList.contains(input.id)).textContent = 'test'
     }
 
-    const error = [...this.validityErrors].find(validityError => validityError.classList.contains(input.id));
+    const error = [...this.validityErrors].find((validityError) =>
+      validityError.classList.contains(input.id),
+    );
     const validity = input.checkValidity();
     const { type } = e;
     console.log(validity);

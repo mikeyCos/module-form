@@ -14,12 +14,12 @@ export default (state) => ({
   bindEvents() {
     this.submitForm = this.submitForm.bind(this);
     this.resetForm = this.resetForm.bind(this);
-    this.form.addEventListener('submit', this.submitForm)
+    this.form.addEventListener('submit', this.submitForm);
     this.btnCancel.addEventListener('click', this.resetForm);
 
     // in form_validation_controller.js
     this.validateInput = this.validateInput.bind(this);
-    this.inputs.forEach(input => this.bindInput(input, 'blur'));
+    this.inputs.forEach((input) => this.bindInput(input, 'blur'));
   },
   bindInput(input, eventType) {
     input.addEventListener(eventType, this.validateInput);
@@ -29,23 +29,26 @@ export default (state) => ({
     const container = document.createElement('div');
     formElement.setAttributes({ id: 'form', novalidate: true });
     container.classList.add('container');
-    
-    Object.keys(inputs).forEach(input => {
+
+    Object.keys(inputs).forEach((input) => {
       const formItem = createElement('div');
       const formLabel = createElement('label');
       const formError = createElement('span');
       const formInput = createElement(inputs[input].element);
-      formItem.setAttributes({ class: 'form_item' })
+      formItem.setAttributes({ class: 'form_item' });
       formInput.setAttributes(inputs[input].attributes);
-      formLabel.setAttributes({for: inputs[input].attributes.id});
+      formLabel.setAttributes({ for: inputs[input].attributes.id });
       formLabel.textContent = inputs[input].textContent;
-      formError.setAttributes({ class: `validity_error ${inputs[input].attributes.id}`, 'aria-live': 'polite'});
+      formError.setAttributes({
+        class: `validity_error ${inputs[input].attributes.id}`,
+        'aria-live': 'polite',
+      });
       formError.textContent = inputs[input].error;
 
       if (inputs[input].children) {
         // need to set option value AND textContent
         // for example, value='ch' and textContent will be Switzerland
-        const { children: options } = inputs[input]
+        const { children: options } = inputs[input];
         for (let i = 0; i < options.countries.length; i += 1) {
           const option = createElement(options.element);
 
@@ -66,7 +69,7 @@ export default (state) => ({
     const formButtonsContainer = createElement('div');
     formButtonsContainer.setAttributes({ class: 'form_buttons' });
 
-    Object.keys(formButtons).forEach(btn => {
+    Object.keys(formButtons).forEach((btn) => {
       const formButton = createElement(formButtons[btn].element);
       formButton.setAttributes(formButtons[btn].attributes);
       formButton.textContent = btn;
@@ -81,4 +84,3 @@ export default (state) => ({
     return formElement;
   },
 });
-

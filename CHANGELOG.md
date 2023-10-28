@@ -1,5 +1,8 @@
 # Changelog
 ---
+### 27 OCT 2023
+- Created `.prettierignore` and `.prettierrc.json` files, ESLint and Prettier should now work with this module, and removed `.vscode/` directory.  
+---
 ### 26 OCT 2023
 - Regular expression for password now works and will require at least one of each of the following: 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character, password confirmation input will use the password's value as it's pattern attribute, and selecting a country option will set the zip codes pattern attribute.   
 ---

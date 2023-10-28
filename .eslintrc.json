@@ -6,12 +6,16 @@
     },
     "extends": [
         "airbnb-base",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": [
         "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": "latest"
     },
     "rules": {
-        "no-console": "off"
+        "prettier/prettier": "error",
+        "no-unused-vars": "warn"
     }
 }
