@@ -1,5 +1,8 @@
 # Changelog
 ---
+### 30 OCT 2023
+- Zipcodes object type changed from object to an array object with the following properties: (`country`, `iso`, `regex`, `error`), the country corresponding to the `<select id= "country" ...attributes></select>` value is retrieved from zipcodes, if `zipCountry` exists then the appropriate pattern attribute and text content is set corresponding to the selected country, if `zipCountry` does not exist then the zipcode's 'fallback' error message is displayed, and wrapped the inputs and images with a `div` container.   
+---
 ### 27 OCT 2023
 - Created `.prettierignore` and `.prettierrc.json` files, ESLint and Prettier should now work with this module, and removed `.vscode/` directory.  
 ---

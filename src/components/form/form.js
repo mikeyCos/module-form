@@ -1,6 +1,7 @@
 import { inputs, formButtons } from './form.config';
 import createElement from '../../utilities/createElement';
 import './form.css';
+import Icon from '../../assets/icons/error.svg';
 
 export default (state) => ({
   type: state.type,
@@ -10,6 +11,7 @@ export default (state) => ({
     this.btnCancel = container.querySelector('.btn_cancel');
     this.validityErrors = container.querySelectorAll('.validity_error');
     this.btnSubmit = container.querySelector('.btn_submit');
+    console.log(this.inputs);
   },
   bindEvents() {
     this.submitForm = this.submitForm.bind(this);
@@ -34,9 +36,14 @@ export default (state) => ({
       const formItem = createElement('div');
       const formLabel = createElement('label');
       const formError = createElement('span');
+      const formInputContainer = createElement('div');
       const formInput = createElement(inputs[input].element);
+      const formInputImage = createElement('img');
+
       formItem.setAttributes({ class: 'form_item' });
       formInput.setAttributes(inputs[input].attributes);
+      formInputContainer.setAttributes({ class: 'form_input_container' });
+      formInputImage.setAttributes({ src: Icon });
       formLabel.setAttributes({ for: inputs[input].attributes.id });
       formLabel.textContent = inputs[input].textContent;
       formError.setAttributes({
@@ -60,8 +67,10 @@ export default (state) => ({
         }
       }
 
+      formInputContainer.appendChild(formInput);
+      formInputContainer.appendChild(formInputImage);
       formItem.appendChild(formLabel);
-      formItem.appendChild(formInput);
+      formItem.appendChild(formInputContainer);
       formItem.appendChild(formError);
       container.appendChild(formItem);
     });

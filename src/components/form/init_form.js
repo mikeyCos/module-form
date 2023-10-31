@@ -8,23 +8,20 @@ const initForm = (type) => {
 
   return {
     ...form(state),
-    ...formValidationController(state)
-  }
-}
+    ...formValidationController(state),
+  };
+};
 
 export default {
   sections: [],
   add(type) {
-    this.sections = [
-      ...this.sections,
-      initForm(type)
-    ];
+    this.sections = [...this.sections, initForm(type)];
     return this.find(type);
   },
   remove(type) {
     this.sections.splice(this.sections.indexOf(this.find(type)), 1);
   },
   find(type) {
-    return this.sections.find(section => section.type === type);
-  }
-}
+    return this.sections.find((section) => section.type === type);
+  },
+};
