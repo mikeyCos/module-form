@@ -1,3 +1,5 @@
+import visibility_on from '../../assets/icons/visibility_on.svg';
+
 export const inputs = {
   email: {
     element: 'input',
@@ -10,7 +12,7 @@ export const inputs = {
       placeholder: 'email@address.com',
       required: true,
     },
-    error: 'Use a valid email address (e.g., your_email@xyz.com).',
+    error: 'Enter a valid email address (e.g., your_email@xyz.com).',
   },
   country: {
     element: 'select',
@@ -57,8 +59,23 @@ export const inputs = {
       required: true,
       pattern: '(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)(?!.* ).{8,30}',
     },
+    sibling: {
+      element: 'button',
+      attributes: {
+        class: 'btn_visibility',
+        type: 'button',
+      },
+      child: {
+        element: 'img',
+        attributes: {
+          class: 'visibility',
+          src: visibility_on,
+          onload: 'SVGInject(this)',
+        },
+      },
+    },
     error:
-      'Password must be at least 8 characters long, can be up to 30 characters long, and must contain 1 of each of the following: uppercase letter, lowercase letter, number, and special character. No spaces allowed.',
+      'Password must be at least 8 characters long, can be up to 30 characters long, and must contain 1 of each of the following: uppercase letter, lowercase letter, number, and special character; no spaces allowed.',
   },
   passwordConfirmation: {
     element: 'input',
@@ -70,6 +87,21 @@ export const inputs = {
       type: 'password',
       placeholder: 'Reenter password',
       required: true,
+    },
+    sibling: {
+      element: 'button',
+      attributes: {
+        class: 'btn_visibility',
+        type: 'button',
+      },
+      child: {
+        element: 'img',
+        attributes: {
+          class: 'visibility',
+          src: visibility_on,
+          onload: 'SVGInject(this)',
+        },
+      },
     },
     error: 'Passwords do not match.',
   },

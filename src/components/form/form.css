@@ -4,23 +4,97 @@
 }
 
 #form > .container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
   padding: 1rem;
 }
 
 #form > .container > .form_item {
   display: flex;
   flex-direction: column;
+  row-gap: 0.25rem;
 }
 
-#form > .container > .form_item > .form_input:focus {
-  outline: 10px solid black;
+#form > .container > .form_item > label::first-letter {
+  text-transform: uppercase;
 }
 
-#form > .container > .form_item > .input_error {
-  border: 5px solid red;
+#form > .container > .form_item > .input_wrapper {
+  display: flex;
+}
+
+#form > .container > .form_item > .input_wrapper > .form_input {
+  flex: 1 auto;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+}
+
+#form > .container > .form_item > .input_wrapper > .form_input:valid {
+  border: 2px solid green;
+}
+
+#form > .container > .form_item > .input_wrapper > .form_input:focus {
+  border-color: black;
+  border-width: 6px;
+  padding: 0.75rem;
+  outline: none;
+}
+
+#form > .container > .form_item > label[for='password'] + .input_wrapper,
+#form > .container > .form_item > label[for='password_confirm'] + .input_wrapper {
+  display: flex;
+  position: relative;
+}
+
+#form > .container > .form_item > label[for='password'] + .input_wrapper > .btn_visibility,
+#form > .container > .form_item > label[for='password_confirm'] + .input_wrapper > .btn_visibility {
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 12px;
+  align-self: center;
+  display: flex;
+}
+
+#form > .container > .form_item > label[for='password'] + .input_wrapper > .btn_visibility:hover,
+#form
+  > .container
+  > .form_item
+  > label[for='password_confirm']
+  + .input_wrapper
+  > .btn_visibility:hover {
+  cursor: pointer;
+}
+
+#form > .container > .form_item > .input_wrapper > .input_error {
+  border: 3px solid rgb(255, 0, 0);
 }
 
 #form > .container > .form_item > .validity_error {
-  /* visibility: hidden; */
   display: none;
+  color: rgb(255, 0, 0);
+}
+
+#form > .container > .form_buttons {
+  display: flex;
+  justify-content: end;
+  column-gap: 0.5rem;
+}
+
+#form > .container > .form_buttons > button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  box-shadow: 0 2px 3px -2px black;
+  text-transform: capitalize;
+}
+
+#form > .container > .form_buttons > button:hover {
+  cursor: pointer;
+}
+
+#form > .container > .form_buttons > button:active {
+  box-shadow: 0 5px 5px -2px black;
 }

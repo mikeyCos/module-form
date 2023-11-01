@@ -15,13 +15,11 @@ export default () => ({
     e.preventDefault();
     this.inputs.forEach((input) => this.validateInput(input));
     if ([...this.inputs].every((input) => this.validateInput(input))) {
-      console.log('form can be submitted');
-    } else {
-      console.log('form CANNOT be submitted');
+      this.resetForm();
     }
-    // this.resetForm();
   },
   validateInput(e) {
+    console.log(e);
     const input = e.currentTarget ? e.currentTarget : e;
     const error = [...this.validityErrors].find((validityError) =>
       validityError.classList.contains(input.id),

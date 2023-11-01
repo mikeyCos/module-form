@@ -1,7 +1,8 @@
 import { inputs, formButtons } from './form.config';
 import createElement from '../../utilities/createElement';
 import './form.css';
-import Icon from '../../assets/icons/error.svg';
+import visibility_on from '../../assets/icons/visibility_on.svg';
+import visibility_off from '../../assets/icons/visibility_off.svg';
 
 export default (state) => ({
   type: state.type,
@@ -11,13 +12,15 @@ export default (state) => ({
     this.btnCancel = container.querySelector('.btn_cancel');
     this.validityErrors = container.querySelectorAll('.validity_error');
     this.btnSubmit = container.querySelector('.btn_submit');
-    console.log(this.inputs);
+    this.btnsVisibility = container.querySelectorAll('.btn_visibility');
   },
   bindEvents() {
     this.submitForm = this.submitForm.bind(this);
     this.resetForm = this.resetForm.bind(this);
+    this.togglePassword = this.togglePassword.bind(this);
     this.form.addEventListener('submit', this.submitForm);
     this.btnCancel.addEventListener('click', this.resetForm);
+    this.btnsVisibility.forEach((btn) => btn.addEventListener('click', this.togglePassword));
 
     // in form_validation_controller.js
     this.validateInput = this.validateInput.bind(this);
@@ -36,14 +39,12 @@ export default (state) => ({
       const formItem = createElement('div');
       const formLabel = createElement('label');
       const formError = createElement('span');
-      const formInputContainer = createElement('div');
+      const inputWrapper = createElement('div');
       const formInput = createElement(inputs[input].element);
-      const formInputImage = createElement('img');
 
       formItem.setAttributes({ class: 'form_item' });
       formInput.setAttributes(inputs[input].attributes);
-      formInputContainer.setAttributes({ class: 'form_input_container' });
-      formInputImage.setAttributes({ src: Icon });
+      inputWrapper.setAttributes({ class: 'input_wrapper' });
       formLabel.setAttributes({ for: inputs[input].attributes.id });
       formLabel.textContent = inputs[input].textContent;
       formError.setAttributes({
@@ -51,6 +52,8 @@ export default (state) => ({
         'aria-live': 'polite',
       });
       formError.textContent = inputs[input].error;
+
+      inputWrapper.appendChild(formInput);
 
       if (inputs[input].children) {
         // need to set option value AND textContent
@@ -65,12 +68,18 @@ export default (state) => ({
           });
           formInput.appendChild(option);
         }
+      } else if (inputs[input].sibling) {
+        const btnVisibility = createElement(inputs[input].sibling.element);
+        const visibilityIcon = createElement(inputs[input].sibling.child.element);
+        btnVisibility.setAttributes(inputs[input].sibling.attributes);
+        visibilityIcon.setAttributes(inputs[input].sibling.child.attributes);
+
+        btnVisibility.appendChild(visibilityIcon);
+        inputWrapper.appendChild(btnVisibility);
       }
 
-      formInputContainer.appendChild(formInput);
-      formInputContainer.appendChild(formInputImage);
       formItem.appendChild(formLabel);
-      formItem.appendChild(formInputContainer);
+      formItem.appendChild(inputWrapper);
       formItem.appendChild(formError);
       container.appendChild(formItem);
     });
@@ -91,5 +100,18 @@ export default (state) => ({
     this.cacheDOM(formElement);
     this.bindEvents();
     return formElement;
+  },
+  togglePassword(e) {
+    const input = e.currentTarget.previousSibling;
+    const icon = e.currentTarget.firstChild;
+    const newIcon = createElement('img');
+    newIcon.setAttributes({
+      class: icon.classList,
+      src: icon.dataset.injectUrl === visibility_on ? visibility_off : visibility_on,
+      onload: 'SVGInject(this)',
+    });
+
+    input.type !== 'text' ? (input.type = 'text') : (input.type = 'password');
+    icon.replaceWith(newIcon);
   },
 });
